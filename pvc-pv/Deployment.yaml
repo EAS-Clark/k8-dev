@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: birds
+  # ...
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: birds
+  template:
+    metadata:
+      labels:
+        app: birds
+    spec:
+      containers:
+        - name: bird-container
+          # ... other configurations for the bird-container ...
+          volumeMounts:
+            - name: bird-storage
+              mountPath: /path/to/mount # Replace with the desired mount path within the bird-container
+
+        - name: another-container
+          # ... other configurations for the another-container ...
+          volumeMounts:
+            - name: bird-storage
+              mountPath: /path/to/mount # Same mount path as in the bird-container
+
+      volumes:
+        - name: bird-storage
+          persistentVolumeClaim:
+            claimName: birds-pvc

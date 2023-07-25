@@ -1,0 +1,12 @@
+
+
+
+get user of a pod
+kubectl exec ubuntu-sleeper -- whoami
+
+get secret from a live pod 
+kubectl exec -it ubuntu-sleeper ls /var/run/secret/kubernetes.io/serviceaccount
+
+get secret from a live pod 
+kubectl exec -it ubuntu-sleeper cat /var/run/secret/kubernetes.io/serviceaccount/token
+

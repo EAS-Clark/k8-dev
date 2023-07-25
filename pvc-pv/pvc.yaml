@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: birds-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce # Adjust the access mode to match the PV
+  resources:
+    requests:
+      storage: 2Gi # Adjust the storage size as needed, should be less than or equal to PV capacity
+  storageClassName: manual
